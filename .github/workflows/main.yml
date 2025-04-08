@@ -8,7 +8,7 @@ on: [push, pull_request]
 jobs:
   job_1:
     name: My first job
-    runs-on: ${{matrix.os_version }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v2
 
