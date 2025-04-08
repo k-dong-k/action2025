@@ -1,6 +1,6 @@
 # My workflow
 
-name: My first wordkflow
+name: My first workflow
 
 
 on: [push, pull_request]
