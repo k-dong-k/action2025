@@ -5,28 +5,20 @@ name: My first wordkflow
 
 on: [push, pull_request]
 
-strategy:
-  matrix:
-    os_version: [macos-latest, ubuntu=latest]
-    node_Version: [10, 12, 14]
-
 jobs:
   job_1:
     name: My first job
     runs-on: ${{matrix.os_version }}
     steps:
       - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node_version }}
+
+      - name: Install Deendencies
+        run: npm install
+      - name: Clean install dependencies and build
+        run: |
+          npm ci
+          npm run build
+        working-directory: ./temp
+        shell: bash
+
     
-# jobs:
-#   job_1:
-#     name: My first job
-#     runs-on: ubuntu-latest
-    
-  # job_2:
-  #   name: My second job
-  #   needs: job_1
-  # job_3:
-  #   name: My third job
-  #   needs: [job_1, job_2]
